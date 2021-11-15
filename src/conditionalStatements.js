@@ -35,7 +35,7 @@ function determineThePositionOfThePoint (x, y) {
 return result;    
 }
 
-console.log('Определяем какой четверти принадлежит точка с координатами (х,у) ' + determineThePositionOfThePoint(555, 700)); // 3;
+console.log('Определяем какой четверти принадлежит точка с координатами (х,у) ' + determineThePositionOfThePoint(0, 1000)); // 3;
 
 
 // 3. Найти суммы только положительных из трех чисел;
@@ -80,32 +80,34 @@ function ratingDetermination (rating) {
     let result = '';
 
     switch (true) {
+        case rating > 100 || rating < 0:
+            return 'Not valid input, type score between 0 - 100'
+
         case rating >= 0 && rating <= 19:
             rating = 'F';
-            break;
+            return 'F'
 
         case rating >= 20 && rating <= 39:
             rating = 'E';
-            break;
+            return 'E'
             
         case rating >= 40 && rating <= 59:
             rating = 'D';
-            break;
+            return 'D'
             
         case rating >= 60 && rating <= 74:
             rating = 'C';
-            break; 
+            return 'C' 
             
         case rating >= 75 && rating <= 89:
             rating = 'B';
-            break;
+            return 'B';
             
         case rating >= 90 && rating <= 100:
             rating = 'A';
-            break;    
+            return 'A';    
     }   
-
-return  result;   
+  
 }
 
 console.log('Определяем оценку студента по его рейтингу ' + ratingDetermination(90)); // A;

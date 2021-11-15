@@ -1,27 +1,38 @@
 // 1. Найти сумму четных чисел и их количество в диапазоне от 1 до 99;
 
-function sumAndNumberOfEveNumbers() {
+function sumAndNumberOfEveNumbers(num) {
 let evenNumbers = 0;
 let summ = 0;
+const res = [];
 
-for (let i = 0; i < 99; i++) {
+for (let i = 0; i < num; i++) {
 
-    if (i % 2 === 0) {
-        evenNumbers++
-    } else {
-        summ += i
+        if (i % 2 === 0) {
+            evenNumbers++
+        } else {
+            summ += i
+        }
     }
+
+    res.push(evenNumbers, summ);
+
+return  res;  
 }
 
-console.log(`Количество целых чисел ${evenNumbers}`);
-console.log(`Сумма целых чисел ${summ}`);
-}
+const firstTask = sumAndNumberOfEveNumbers(50);
 
-console.log(sumAndNumberOfEveNumbers()); // 50, 2450;
+console.log(`Количество целых чисел ${firstTask[0]}`);
+console.log(`Сумма целых чисел ${firstTask[1]}`);
+
+console.log(sumAndNumberOfEveNumbers(99)); // 50, 2401;
 
 // 2. Проверить простое ли число? (число называется простым, если оно делится только само на себя и на 1);
 
 function isNumberSimple (number) {
+    if (+number % +number !== 0 || isNaN(number)) {
+        return 'Invalid input data, please enter a number';
+    } 
+
     let suitableNumbers = [];
     let result = Boolean();
 
@@ -44,9 +55,12 @@ console.log('Проверяем является ли число простым 
 // const rootOfNumber = number => Math.round(Math.sqrt(number));
 
 function rootOfNumberLine (number) {
+    if (+number % +number !== 0 || isNaN(number)) {
+        return 'Invalid input data, please enter a number';
+    } 
     for (let i = 0; i < number; i++) {
         if (i * i > number) {
-            return i - 1;
+            return Math.round(i - 1);
         }
     }
 }
@@ -58,6 +72,9 @@ function rootOfNumberBinary (number) {
     let right = number;
     let mid;
 
+    if (+number % +number !== 0 || isNaN(number)) {
+        return 'Invalid input data, please enter a number';
+    } 
     while (left <= right) {
         mid = Math.round((right - left) / 2) + left;
             if (mid * mid === number) {
@@ -68,6 +85,7 @@ function rootOfNumberBinary (number) {
                 left = mid + 1;
             }     
     }
+    return -1;
 }
 
 console.log('Находим корень числа при помощи алгоритма бинарного поиска ' + rootOfNumberBinary(9));
@@ -77,12 +95,16 @@ console.log('Находим корень числа при помощи алго
 // const numberFactorial = number => number != 1 ? number * numberFactorial(number - 1) : 1; // Вариант со стрелкой
 
     function numberFactorial (number) { // Вариант с function declaration
+        if (+number % +number !== 0 || isNaN(number) || number < 0) {
+            return 'Invalid input data, please enter a number bigger then 0';
+        }
+        
         if (number != 1) {
            return number * numberFactorial(number - 1)
         } else return 1
     }
 
-console.log('Находим факториал чила ' + numberFactorial(7)); // 5040
+console.log('Находим факториал числа ' + numberFactorial(7)); // 5040
 
 // 5. Посчитать сумму цифр заданного числа
 
@@ -91,6 +113,10 @@ console.log('Находим факториал чила ' + numberFactorial(7));
 function summOfNumbers (number) {
     let result = 0;
     let numberToArr = String(number).split('');
+
+    if (+number % +number !== 0 || isNaN(number) || number < 0) {
+        return 'Invalid input data, please enter a number bigger then 0';
+    }
 
     for (let i = 0; i < numberToArr.length; i++) {
         result += Number(numberToArr[i]);
@@ -106,14 +132,18 @@ console.log('Находим сумму чисел заданого числа ' 
 // const reverseNumber = number => +(number.toString().split('').reverse().join(''));
 
 function reverseNumber (number) {
+    if (+number % +number !== 0 || isNaN(number) || number < 0) {
+        return 'Invalid input data, please enter a number bigger then 0';
+    }
+
     let result = [];
-    let numberToArr = String(number).split(',');
+    let numberToArr = String(number).split('');
 
     for (let i = numberToArr.length - 1 , k = 0; i >= 0; i--, k++) {
         result[k] = numberToArr[i]
     }
 
-return result;    
+return result.join('');    
 }
 
 console.log('Выводим зеркальное отображение числа ' + reverseNumber(123)); // 321
