@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>ToDo(class + MVC)</title>
+</head>
+<body>
+<div class="container">
+
+   <div class="todo_list">
+        <h1>Todo list</h1>
+       <div class="create_new_todo">
+           <input type="text" class="message" placeholder="Description">
+           <button class="add">Add</button>
+           <button class="clear">Clear</button>
+       </div>
+    
+   </div>
+
+   <div>
+        - Left mouse button click to edit <br>
+        - MiddleMouse button click to mark as done <br>
+        - MiddleMouse button click again to make task actual <br>
+        <div class='remove_option' id="Done" style="text-decoration: line-through">- Double click to remove (A dangerous option! Disabled by default! You can activate it simply by clicking on this line!)</div>
+   </div>
+   
+
+    <div class="wrapper">
+    <ul class="todo"></ul>
+    </div>
+
+</div>
+
+<style>
+    body { background: url(./media/list.jpg); }
+</style>
+
+</body>
+
+<script src="./View.js"></script>
+<script src="./Model.js"></script>
+<script src="./Controller.js"></script>
+<script src="./LocalStorage.js"></script>
+<script src="./app.js"></script>
+
+</html>
