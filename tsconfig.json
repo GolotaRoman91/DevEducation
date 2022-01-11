@@ -1,7 +1,14 @@
 {
     "compilerOptions": {
-        "noEmitOnError": true,
+        "outDir": "dist",
         "target": "ES6",
-        "watch": true
-    }
+        "strict": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node"
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"],
+    "target": "esnext",
+    "lib": ["esnext", "dom"]
 }
